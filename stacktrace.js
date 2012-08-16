@@ -26,6 +26,15 @@ define([], function() {
         };
 
         /**
+         * @param {Array|Object} options The stack to stringify or config to print the stack
+         * @see StackTrace#print
+         */
+        StackTrace.toString = function(options) {
+          var stack = (options === Object) ? print(options) : options;
+          return stack.join("\n");
+        };
+
+        /**
          * Given a context, function name, and callback function, overwrite it so that it calls
          * print() first with a callback and then runs the rest of the body.
          *
